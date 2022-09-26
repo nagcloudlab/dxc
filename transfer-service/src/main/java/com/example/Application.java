@@ -1,25 +1,28 @@
 package com.example;
 
-import com.example.repository.AccountRepository;
-import com.example.repository.JdbcAccountRepository;
-import com.example.repository.JpaAccountRepository;
 import com.example.service.TransferService;
-import com.example.service.UPITransferService;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
+@Configuration
+@ComponentScan(basePackages = {"com.example"})
+@EnableTransactionManagement
 public class Application {
     public static void main(String[] args) {
 
         // init / boot phase
-        AccountRepository jdbcAccountRepository = new JdbcAccountRepository();
-        AccountRepository jpaAccountRepository = new JpaAccountRepository();
-        TransferService transferService = new UPITransferService(jpaAccountRepository);
+        ConfigurableApplicationContext applicationContext =
+                new AnnotationConfigApplicationContext(Application.class);
 
 
         System.out.println("-".repeat(100));
         // use
-        transferService.transfer(300.00, "1", "2");
-        System.out.println("-".repeat(1));
-        transferService.transfer(300.00, "1", "2");
+        TransferService transferService = applicationContext.getBean("transferService", TransferService.class);
+        transferService.transfer(100, "1", "2");
 
 
         System.out.println("-".repeat(100));
