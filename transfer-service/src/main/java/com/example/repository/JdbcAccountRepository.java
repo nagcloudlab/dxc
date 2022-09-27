@@ -1,7 +1,8 @@
 package com.example.repository;
 
 import com.example.model.Account;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,7 +18,8 @@ import java.sql.SQLException;
 @Qualifier("jdbc")
 public class JdbcAccountRepository implements AccountRepository {
 
-    private static final Logger LOGGER = Logger.getLogger("ts");
+    Logger LOGGER = LoggerFactory.getLogger("ts");
+
     private JdbcTemplate jdbcTemplate;
 
     @Autowired

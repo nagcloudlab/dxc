@@ -1,0 +1,18 @@
+
+
+
+
+How spring prepare application in boot/init phase
+
+
+=> load bean definitions ( xml , comp-scan, @Bean )
+=> BFPP  ( to modify bean defintion id required )
+=> For Every bean definition`
+    => instantiation
+    => DI
+    => BPP  ( validate bean's properties , create dynamic proxies ...)
+        => BPP before init()
+        => init()
+        => BPP after init()
+
+---------------------------------------------------------

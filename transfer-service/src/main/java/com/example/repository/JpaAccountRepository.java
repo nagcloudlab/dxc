@@ -1,7 +1,8 @@
 package com.example.repository;
 
 import com.example.model.Account;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +14,8 @@ import javax.persistence.PersistenceContext;
 @Qualifier("jpa")
 public class JpaAccountRepository implements AccountRepository{
 
-    private static final Logger LOGGER = Logger.getLogger("ts");
+    Logger LOGGER = LoggerFactory.getLogger("ts");
+
 
     @PersistenceContext
     EntityManager entityManager;

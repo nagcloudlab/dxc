@@ -2,7 +2,8 @@ package com.example.service;
 
 import com.example.model.Account;
 import com.example.repository.AccountRepository;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service(value = "transferService")
 public class UPITransferService implements TransferService {
 
-    private static final Logger LOGGER = Logger.getLogger("ts");
+    Logger LOGGER = LoggerFactory.getLogger("ts");
+
     private AccountRepository accountRepository;
 
     public UPITransferService(/*@Qualifier("jdbc")*/ AccountRepository accountRepository) {
@@ -22,7 +24,7 @@ public class UPITransferService implements TransferService {
     @Transactional
     @Override
     public void transfer(double amount, String source, String destination) {
-        LOGGER.info("Transfer initiated");
+//        LOGGER.info("Transfer initiated");
 
         Account sourceAccount = accountRepository.loadAccount(source);
         Account destinationAccount = accountRepository.loadAccount(destination);
@@ -34,7 +36,7 @@ public class UPITransferService implements TransferService {
         if (1 == 2)
             throw new IllegalStateException("oops");
         accountRepository.updateAccount(destinationAccount);
-        LOGGER.info("transfer completed");
+//        LOGGER.info("transfer completed");
     }
 
 }
