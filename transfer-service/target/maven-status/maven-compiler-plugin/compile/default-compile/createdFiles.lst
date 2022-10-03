@@ -1,0 +1,10 @@
+com\config\DxcAuoConfiguration.class
+com\example\repository\JdbcAccountRepository.class
+com\example\repository\JpaAccountRepository.class
+com\example\service\UPITransferService.class
+com\example\Application.class
+com\example\model\Account.class
+com\example\repository\AccountRepository.class
+com\example\aspects\LoggingAspect.class
+com\example\service\GreetingService.class
+com\example\service\TransferService.class

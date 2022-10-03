@@ -1,0 +1,68 @@
+
+----------------------------------------------------------------
+todos-service
+----------------------------------------------------------------
+
+ steps to design REST api
+
+ know the resource(s)
+
+    1. Todo
+    2. User
+
+    relations between Todo and User
+
+    1 User has many Todos
+
+ 1. Resource identification in requests
+
+    /v1/api/todos
+    /v1/api/todos/{identification}
+    /v1/api/users
+    /v1/api/users/{identification}
+    /v1/api/users/{identification}/todos
+    /v1/api/users/{identification}/todos/{identification}
+
+ 2. Resource manipulation through representations
+
+    GET /api/todos
+    GET /api/todos/{identification}
+    POST /api/todos
+    PUT /api/todos/{identification}
+    DELETE /api/todos/{identification}
+
+    representations
+
+     JSON, XML and other
+
+ 3. Self-descriptive messages
+
+    standard HTTP headers
+
+    Content-Type: application/json
+    Accept: application/json
+
+ 4. Hypermedia as the engine of application state (HATEOAS)
+
+
+----------------------------------------------------------------
+
+How to implement REST-api as java developer
+
+2 ways
+
+    1. JAX-RS spec  ( standard specification to implement & consume REST api)
+
+        implementation(s)
+
+        - RESTEasy ( from JBOSS )
+        - Jersey  ( from Eclipse)
+        ..
+
+    2. Spring MVC
+
+------------------------------------------------------------------------
+
+
+
+
