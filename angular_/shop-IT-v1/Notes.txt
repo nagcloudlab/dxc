@@ -1,0 +1,41 @@
+
+
+
+- why we need Angular
+- javascript vs typescript
+- angular cli
+- data binding
+
+    types:
+
+    a. interpolation
+
+        => to bind/read component's fields into template
+        => to execute any javascript expression
+        syntax: <element>{{expr}}</element>
+
+    b. property 
+
+        => to bind dynamic values to element's property/attribute 
+        syntax: <element [prop1]="expr" [prop2]="expr"/>
+
+    c. event
+
+        => to listen event on elements
+        syntax: <element (event-name)="handler($event)"/>
+            
+
+- directives ( re-usable javascript functionalities )
+
+    types:
+    a. component
+        => re-usable UI fragments
+
+    b. structural
+        => to change component's template structure
+        e.g ngIf, ngFor, ...
+    
+    c. attribute 
+        => to change element's attributes 
+        e.g ngClass
+
