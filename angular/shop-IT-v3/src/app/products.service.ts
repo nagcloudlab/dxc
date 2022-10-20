@@ -1,3 +1,4 @@
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
 @Injectable({
@@ -5,32 +6,14 @@ import {Injectable} from '@angular/core';
 })
 export class ProductsService {
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+  }
 
   getProducts() {
-    return [
-      {
-        id: 1,
-        name: "laptop",
-        price: 450000,
-        discount: 10000,
-        currencyCode: "INR",
-        description: "New Mac pro",
-        isAvailable: true,
-        imgPath: "assets/Laptop.png",
-        makeDate: Date.now()
-      },
-      {
-        id: 2,
-        name: "mobile",
-        price: 150000,
-        currencyCode: "INR",
-        description: "New pro",
-        isAvailable: true,
-        imgPath: "assets/Mobile.png",
-        makeDate: Date.now()
-      },
-    ]
+    return this.http.get("http://localhost:8080/v1/api/products");
+  }
+  getReviews(productId: number) {
+    return this.http.get(`http://localhost:8080/v1/api/products/${productId}/reviews`);
   }
 
 }

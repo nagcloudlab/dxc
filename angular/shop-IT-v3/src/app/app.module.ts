@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http'
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { ProductComponent } from './product/product.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ReviewComponent } from './review/review.component';
-import { CartBadgeComponent } from './cart-badge/cart-badge.component';
-import { DiscountPipe } from './discount.pipe';
-import { HighlightDirective } from './highlight.directive';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './header/header.component';
+import {ProductComponent} from './product/product.component';
+import {ProductListComponent} from './product-list/product-list.component';
+import {ReviewComponent} from './review/review.component';
+import {CartBadgeComponent} from './cart-badge/cart-badge.component';
+import {DiscountPipe} from './discount.pipe';
+import {HighlightDirective} from './highlight.directive';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,11 @@ import { HighlightDirective } from './highlight.directive';
     HighlightDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
