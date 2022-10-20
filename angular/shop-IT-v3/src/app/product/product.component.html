@@ -1,0 +1,44 @@
+<div class="row" appHighlight>
+  <div class="col-3">
+    <img [src]="product.imgPath" class="img-fluid" />
+  </div>
+  <div class="col-9">
+<!--    <pre>{{product|json}}</pre>-->
+    <div>{{product.name|uppercase}} <small>{{product.makeDate|date:'yyyy-MM-dd'}}</small></div>
+    <div *ngIf="product.discount">
+      <span>{{product.price|discount|currency:product.currencyCode:true}}</span>
+      <del class="str">{{product.price|currency:product.currencyCode:true}}</del>
+    </div>
+    <div *ngIf="!product.discount">{{product.price|discount|currency:product.currencyCode:true}}</div>
+    <button (click)="handleBuy($event)" class="btn btn-sm btn-dark">Buy</button>
+    <br />
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a (click)="changeTab($event,1)"
+           [ngClass]="{'nav-link':true,active:isTabSelected(1)}"
+           href="">
+          Description
+        </a>
+      </li>
+      <li class="nav-item">
+        <a (click)="changeTab($event,2)"
+           [ngClass]="{'nav-link':true,active:isTabSelected(2)}"
+           href="">
+          Specification
+        </a>
+      </li>
+      <li class="nav-item">
+        <a (click)="changeTab($event,3)"
+           [ngClass]="{'nav-link':true,active:isTabSelected(3)}"
+           href="">
+          Reviews
+        </a>
+      </li>
+    </ul>
+    <div *ngIf="isTabSelected(1)">{{product.description}}</div>
+    <div *ngIf="isTabSelected(2)">Not Yet</div>
+    <div *ngIf="isTabSelected(3)">
+      <app-review *ngFor="let rev of reviews" [value]="rev"></app-review>
+    </div>
+  </div>
+</div>

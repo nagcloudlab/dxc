@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header">Voting Box</div>
+  <div class="card-body">
+    <button class="btn btn-primary" (click)="addSubject('Java')">Java</button>&nbsp;
+    <button class="btn btn-primary" (click)="addSubject('Javascript')">Javascript</button>
+    <hr/>
+    <div class="d-flex flex-wrap justify-content-around">
+      <div *ngFor="let sub of subjects">
+        <app-voting-item
+          [value]="sub"
+          (vote)="handleVote($event)"
+          (del)="handleDel($event)"
+        ></app-voting-item>
+      </div>
+    </div>
+    <br/>
+    <app-voting-table
+      *ngIf="votingLines.length>0"
+      [lines]="votingLines">
+    </app-voting-table>
+  </div>
+</div>
