@@ -1,0 +1,19 @@
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+        <th>Name</th>
+        <th>Unit</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let line of cart">
+      <td>{{line.name}}</td>
+      <td></td>
+      <td>{{line.price|currency}}</td>
+      <td>{{line.price|currency}}</td>
+    </tr>
+  </tbody>
+</table>

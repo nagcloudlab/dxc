@@ -3,6 +3,22 @@
   <hr/>
   <app-cart-badge></app-cart-badge>
   <hr/>
-  <app-product-list></app-product-list>
+  <ul class="nav nav-pills">
+    <!--    <li class="nav-item">-->
+    <!--      <a class="nav-link" href>Home</a>-->
+    <!--    </li>-->
+    <!--    <li class="nav-item">-->
+    <!--      <a class="nav-link" href>Products</a>-->
+    <!--    </li>-->
+    <li class="nav-item">
+      <a class="nav-link" href (click)="toggleCart($event)">{{isCartOpen ? "Products" : "Cart"}}</a>
+    </li>
+    <!--    <li class="nav-item">-->
+    <!--      <a class="nav-link" href>Login</a>-->
+    <!--    </li>-->
+  </ul>
+  <hr/>
+  <app-cart *ngIf="isCartOpen"></app-cart>
+  <app-product-list *ngIf="!isCartOpen"></app-product-list>
 
 </div>

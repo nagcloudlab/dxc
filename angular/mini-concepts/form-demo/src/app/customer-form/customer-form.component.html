@@ -1,0 +1,111 @@
+<div class="row" xmlns="http://www.w3.org/1999/html">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">Customer Form</div>
+      <div class="card-body">
+        <form [formGroup]="customerForm"
+              (submit)="handleFormSubmit($event)">
+          <div class="form-group">
+            <label class="form-control-label">First Name</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="firstName"/>
+            {{errors['firstName']}}
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="lastName"/>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="email"/>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Mobile</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="mobile"/>
+          </div>
+          <hr/>
+          <div class="form-group">
+            <label class="form-control-label">Notification &nbsp;</label>
+            <input type="radio" value="sms" formControlName="noti"> sms &nbsp;
+            <input type="radio" value="email" formControlName="noti"> email
+          </div>
+          <hr/>
+
+          <ng-container formArrayName="addresses">
+            <ng-container *ngFor="let address of addresses.controls; let i = index">
+             <div class="card card-body" [formGroup]="address">
+               <div class="form-group">
+                 <label class="form-control-label">Line-1</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   formControlName="line1"/>
+               </div>
+               <div class="form-group">
+                 <label class="form-control-label">Line-2</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   formControlName="line2"/>
+               </div>
+               <div class="form-group">
+                 <label class="form-control-label">City</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   formControlName="city"/>
+               </div>
+             </div>
+            </ng-container>
+          </ng-container>
+
+          <hr/>
+          <button (click)="addNewAddress()" type="button" class="btn btn-sm btn-dark">Add Address</button>
+          <hr/>
+          <br/>
+          <button class="btn btn-primary">Submit</button>
+          <button type="button" (click)="loadCustomer()" class="btn btn-primary">Load Customer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <b>FormGroup</b>
+    <hr/>
+    {{customerForm.value | json}}
+    <hr/>
+    <pre>
+      isInvalid   : {{customerForm.invalid}}
+      isValid     : {{customerForm.valid}}
+
+      isPristine  : {{customerForm.pristine}}
+      isDirty     : {{customerForm.dirty}}
+
+      isTouched   : {{customerForm.touched}}
+      isUntouched : {{customerForm.untouched}}
+    </pre>
+
+    <b>Form Control : firstName</b>
+    <hr/>
+    <pre>
+      isInvalid   : {{customerForm.controls['firstName'].invalid}}
+      isValid     : {{customerForm.controls['firstName'].valid}}
+
+      isPristine  : {{customerForm.controls['firstName'].pristine}}
+      isDirty     : {{customerForm.controls['firstName'].dirty}}
+
+      isTouched   : {{customerForm.controls['firstName'].touched}}
+      isUntouched : {{customerForm.controls['firstName'].untouched}}
+    </pre>
+  </div>
+</div>
